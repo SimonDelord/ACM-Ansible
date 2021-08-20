@@ -5,7 +5,7 @@ metadata:
   name: demo-job-002
   namespace: ansible
   labels:
-    app.kubernetes.io/name: simon-ansible
+    app.kubernetes.io/name: hello-simon
 spec:
   tower_auth_secret: toweraccess
   job_template_name: acm-stuff
