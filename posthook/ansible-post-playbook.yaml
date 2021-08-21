@@ -2,7 +2,7 @@
 apiVersion: tower.ansible.com/v1alpha1
 kind: AnsibleJob
 metadata:
-  name: demo-job-002
+  name: demo-allopapa
   namespace: simon-ansible
   labels:
     app.kubernetes.io/name: hello-simon
