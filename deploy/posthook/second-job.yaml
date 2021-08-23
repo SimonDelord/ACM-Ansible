@@ -2,13 +2,13 @@
 apiVersion: tower.ansible.com/v1alpha1
 kind: AnsibleJob
 metadata:
-  name: secondjob
-  namespace: simon-ansible
+  name: checkhaapp
+  namespace: test
   labels:
-    app.kubernetes.io/name: pacman
+    app.kubernetes.io/name: hello-simon
 spec:
   tower_auth_secret: toweraccess
-  job_template_name: acm-stuff
+  job_template_name: retrieve-dns-entry
   extra_vars:
     API_DOMAIN: demo.red-chesterfield.com
     # The AWS Route53 NS Record must exist with NameServers:
