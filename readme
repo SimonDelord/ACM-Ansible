@@ -1,3 +1,21 @@
+# Introduction
+This is my github repo for all ACM-Ansible related activities.\
+I am going to try to integrate some of the ACM functions with Ansible and see how they can be used together.
+
+ACM is being used as a way of deploying:
+   - triggers and pipelines to any cluster where developers will be using them
+apps in both dev and prod environments
+
+GitHub is used as the code repo environment:
+   - some repositories have been used for ACM to deploy 
+
+The use case is the following (3 steps demo):
+   - **First Step** An infra/devops person creates various Tekton Tasks, Pipelines, Trigger components (TriggerTemplates, TriggerBindings) and uploads them into a GitHub repo. All these Tekton "capabilities" are then imported to the relevant OCP clusters via ACM.
+   
+   ![alt text](https://github.com/SimonDelord/tekton/blob/main/images/Step-1.png)
+
+
+
 This is the set of resources for the deployment of a "stateless" application (hello-world in this case) in a HA mode.
 Basically, I use 2 OCP clusters and deploy the same resources on both clusters.
 the first cluster is of the following type: *.apps.<cluster-1>.melbourneopenshift.com
