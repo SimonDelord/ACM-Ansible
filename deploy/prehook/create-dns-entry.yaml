@@ -5,7 +5,7 @@ metadata:
   name: update-dns-entries
   namespace: simon-ansible
   labels:
-    app.kubernetes.io/name: pacman
+    app.kubernetes.io/name: hello-simon
 spec:
   tower_auth_secret: toweraccess
   job_template_name: create-dns-entry
