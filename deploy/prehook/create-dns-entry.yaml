@@ -2,13 +2,13 @@
 apiVersion: tower.ansible.com/v1alpha1
 kind: AnsibleJob
 metadata:
-  name: f5-update-dns-load-balancer
+  name: update-dns-entries
   namespace: simon-ansible
   labels:
     app.kubernetes.io/name: pacman
 spec:
   tower_auth_secret: toweraccess
-  job_template_name: acm-stuff
+  job_template_name: create-dns-entry
   extra_vars:
     API_DOMAIN: demo.red-chesterfield.com
     # The AWS Route53 NS Record must exist with NameServers:
