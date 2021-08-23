@@ -1,29 +1,31 @@
 # Introduction
 This is my github repo for all ACM-Ansible related activities.\
+
 I am going to try to integrate some of the ACM functions with Ansible and see how they can be used together.
 
-ACM is being used as a way of deploying:
-   - triggers and pipelines to any cluster where developers will be using them
-apps in both dev and prod environments
+There is currently a single use case (August-2021).
 
-GitHub is used as the code repo environment:
-   - some repositories have been used for ACM to deploy 
-
-The use case is the following (3 steps demo):
-   - **First Step** An infra/devops person creates various Tekton Tasks, Pipelines, Trigger components (TriggerTemplates, TriggerBindings) and uploads them into a GitHub repo. All these Tekton "capabilities" are then imported to the relevant OCP clusters via ACM.
+   - **First Use Case** An infra/devops person creates an application and wants to deploy it in a High-availability (HA) mode.
    
    ![alt text](https://github.com/SimonDelord/ACM-Ansible/blob/main/images/ACM-Ansible-HA.png)
 
 
 
-This is the set of resources for the deployment of a "stateless" application (hello-world in this case) in a HA mode.
-Basically, I use 2 OCP clusters and deploy the same resources on both clusters.
-the first cluster is of the following type: *.apps.<cluster-1>.melbourneopenshift.com
-the second cluster is of the following type: *.apps.<cluster-2>.melbourneopenshift.com
+This sample application is a stateless application.
+The K8 resources for it are defined in the deploy folder. It is a simple hello-world in this case (deployment, service, route). 
 
-Now to deploy apps in an HA fashion, we want the same DNS entry for both on the two different clusters.
-For this, I use the sledgehammer (it could 100% be done more elegantly).
+In this use case, ACM is managing 2 OCP clusters and deploys the same resources on both clusters as part of the application creation.
 
+The first cluster is of the following type: *.apps.<cluster-1>.melbourneopenshift.com \
+The second cluster is of the following type: *.apps.<cluster-2>.melbourneopenshift.com \
+
+   
+   
+Now to deploy apps in an HA fashion, we want the same DNS entry for both on the two different clusters.\
+For this, I use a not very refined approach (it could be done more elegantly).\
+   
+   - ***First step*** Modify the Ingress Controller on both managed clusters
+   
 I modify the Ingress Controller Operator on each cluster to create for all apps an ha-apps.melbourneopenshift.com Custom Domain
 
 Log into each of the two clusters
