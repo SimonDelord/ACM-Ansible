@@ -5,7 +5,7 @@ I am going to try to integrate some of the ACM functions with Ansible and see ho
 
 There is currently a single use case (August-2021).
 
-   - **First Use Case** An infra/devops person creates an application and wants to deploy it in a High-availability (HA) mode.
+## First Use Case - An infra/devops person creates an application and wants to deploy it in a High-availability (HA) mode.
    
    ![alt text](https://github.com/SimonDelord/ACM-Ansible/blob/main/images/ACM-Ansible-HA.png)
 
@@ -28,8 +28,7 @@ For this, I use a not very refined approach (it could be done more elegantly).\
    
 I modify the Ingress Controller Operator on each cluster to create for all apps an ha-apps.melbourneopenshift.com Custom Domain
 
-Log into each of the two clusters
-then type
+Log into each of the two clusters and then type
 
 oc edit ingresses.config/cluster -o yaml
 
@@ -43,8 +42,9 @@ spec:
   appsDomain: ha-apps.melbourneopenshift.com
   domain: apps.<cluster-X>.melbourneopenshift.com
 
-Now, any app that will get deployed outside openshift namespaces will have by default a route named svc-name-namespace.ha-apps.melbourneopenshift.com
+Now, any app that will get deployed outside openshift namespaces will have by default a route named svc-name-namespace.ha-apps.melbourneopenshift.com \
 
+     - ***Second step*** 
 Ok now for the automation.
 I created two Ansible-playbooks, one to create the entries for *.ha-apps.melbourneopenshift.com mapped to the 2 IP @s of the OCP clusters (<cluster-1> and <cluster-2>)
 one to do any post hook required (typically a curl command to the relevant URL).
