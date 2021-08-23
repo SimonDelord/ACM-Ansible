@@ -12,7 +12,7 @@ GitHub is used as the code repo environment:
 The use case is the following (3 steps demo):
    - **First Step** An infra/devops person creates various Tekton Tasks, Pipelines, Trigger components (TriggerTemplates, TriggerBindings) and uploads them into a GitHub repo. All these Tekton "capabilities" are then imported to the relevant OCP clusters via ACM.
    
-   ![alt text](https://github.com/SimonDelord/ACM-Ansible/images/ACM-Ansible-HA.png)
+   ![alt text](https://github.com/SimonDelord/ACM-Ansible/blob/main/images/ACM-Ansible-HA.png)
 
 
 
