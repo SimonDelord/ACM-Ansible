@@ -1,5 +1,5 @@
 # Introduction
-This is my github repo for all ACM-Ansible related activities.\
+This is my github repo for all ACM-Ansible related activities.
 
 I am going to try to integrate some of the ACM functions with Ansible and see how they can be used together.
 
@@ -16,8 +16,8 @@ The K8 resources for it are defined in the deploy folder. It is a simple hello-w
 
 In this use case, ACM is managing 2 OCP clusters and deploys the same resources on both clusters as part of the application creation.
 
-The first cluster is of the following type: *.apps.<cluster-1>.melbourneopenshift.com \
-The second cluster is of the following type: *.apps.<cluster-2>.melbourneopenshift.com \
+The first cluster is of the following type: *.apps.cluster-1.melbourneopenshift.com 
+The second cluster is of the following type: *.apps.cluster-2.melbourneopenshift.com 
 
    
    
@@ -34,13 +34,13 @@ oc edit ingresses.config/cluster -o yaml
 
 replace the current 
 spec:
-  domain: apps.<cluster-X>.melbourneopenshift.com
+  domain: apps.cluster-X.melbourneopenshift.com
    
 with
 
 spec:
   appsDomain: ha-apps.melbourneopenshift.com
-  domain: apps.<cluster-X>.melbourneopenshift.com
+  domain: apps.cluster-X.melbourneopenshift.com
 
 Now, any app that will get deployed outside openshift namespaces will have by default a route named svc-name-namespace.ha-apps.melbourneopenshift.com \
 
