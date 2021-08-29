@@ -69,6 +69,7 @@ The secret looks like the following
 
    ![alt text](https://github.com/SimonDelord/ACM-Ansible/blob/main/images/secret.png)
    
+The token can be retrieved by following the process described in the ACM documentation.
    
 ### Fourth step - Deploy the Application via ACM to the two clusters
 
