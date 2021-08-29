@@ -49,15 +49,26 @@ by default a route named svc-name-namespace.ha-apps.melbourneopenshift.com
 
 Ok now for the automation.
 I created two Ansible-playbooks:
-      - one to create the entries for *.ha-apps.melbourneopenshift.com mapped to the 2 IP @s of the OCP clusters (<cluster-1> and <cluster-2>)
-      - one to do any post hook required (typically a curl command to the relevant URL).
+* One to create the entries for *.ha-apps.melbourneopenshift.com mapped to the 2 IP @s of the OCP clusters (<cluster-1> and <cluster-2>)
+* One to do any post hook required (typically a curl command to the relevant URL).
 
 Those playbooks need to be organised into folders.\
 These folders (as of ACM2.2 and ACM2.3) need to be under another folder otherwise ACM doesn't seem to pick up that there are a Prehook and Posthook
 folder in the top repo. 
 
 In this demo, they are under the deploy folder.
+Both ansible-playbooks are under the Ansible folder in the top directory.
+   
+   - ***Third step*** Prepare the Hub-Cluster to interact with Ansible-Tower
 
+There are two elements that need to be done:
+* Install the Operator
+* Deploy a secret in the relevant "subscription namespace" on the Hub
+   
+   
+   - ***Fourth step*** Deploy the Application in ACM to the two clusters
+
+I won't describe the details for the application deployment, but the only difference (in ACM2.2) is to add under the "secret created in Step 3" under the Application.
 From my experience you need a bit of time for the DNS entries to propagate, but after a few minutes the setup should work.
    
 An example of the demo can be found [there](https://youtu.be/xFZD0Oh92wg)   
