@@ -67,7 +67,7 @@ There are two elements that need to be done:
 
 The secret looks like the following
 
-    ![alt text](https://github.com/SimonDelord/ACM-Ansible/blob/main/images/secret.png)
+   ![alt text](https://github.com/SimonDelord/ACM-Ansible/blob/main/images/secret.png)
    
    
 ### Fourth step - Deploy the Application via ACM to the two clusters
