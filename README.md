@@ -16,8 +16,8 @@ The K8 resources for it are defined in the deploy folder. It is a simple hello-w
 
 In this use case, ACM is managing 2 OCP clusters and deploys the same resources on both clusters as part of the application creation.
 
-The first cluster is of the following type: *.apps.cluster-1.melbourneopenshift.com \ 
-The second cluster is of the following type: *.apps.cluster-2.melbourneopenshift.com 
+* The first cluster is of the following type: *.apps.cluster-1.melbourneopenshift.com  
+* The second cluster is of the following type: *.apps.cluster-2.melbourneopenshift.com 
 
    
    
@@ -30,7 +30,7 @@ I modify the Ingress Controller Operator on each cluster to create for all apps 
 
 Log into each of the two clusters and then type
 
-oc edit ingresses.config/cluster -o yaml
+    oc edit ingresses.config/cluster -o yaml
 
 replace the current 
 spec:
@@ -42,9 +42,11 @@ spec:
   appsDomain: ha-apps.melbourneopenshift.com
   domain: apps.cluster-X.melbourneopenshift.com
 
-Now, any app that will get deployed outside openshift namespaces will have by default a route named svc-name-namespace.ha-apps.melbourneopenshift.com \
+Now, any app that will get deployed outside openshift namespaces will have 
+by default a route named svc-name-namespace.ha-apps.melbourneopenshift.com 
 
-     - ***Second step*** 
+   - ***Second step*** Create the relevant Ansible playbooks
+
 Ok now for the automation.
 I created two Ansible-playbooks:
       - one to create the entries for *.ha-apps.melbourneopenshift.com mapped to the 2 IP @s of the OCP clusters (<cluster-1> and <cluster-2>)
@@ -57,5 +59,6 @@ folder in the top repo.
 In this demo, they are under the deploy folder.
 
 From my experience you need a bit of time for the DNS entries to propagate, but after a few minutes the setup should work.
-An example of the demo can be found there https://youtu.be/xFZD0Oh92wg   
+   
+An example of the demo can be found [there](https://youtu.be/xFZD0Oh92wg)   
 
