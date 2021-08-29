@@ -24,7 +24,7 @@ In this use case, ACM is managing 2 OCP clusters and deploys the same resources 
 Now to deploy apps in an HA fashion, we want the same DNS entry for both on the two different clusters.\
 For this, I use a not very refined approach (it could be done more elegantly).
    
-   - ***First step*** Modify the Ingress Controller on both managed clusters
+### First step - Modify the Ingress Controller on both managed clusters
    
 I modify the Ingress Controller Operator on each cluster to create for all apps an ha-apps.melbourneopenshift.com Custom Domain
 
@@ -45,7 +45,7 @@ spec:
 Now, any app that will get deployed outside openshift namespaces will have 
 by default a route named svc-name-namespace.ha-apps.melbourneopenshift.com 
 
-   - ***Second step*** Create the relevant Ansible playbooks
+### Second step - Create the relevant Ansible playbooks
 
 Ok now for the automation.
 I created two Ansible-playbooks:
@@ -59,14 +59,18 @@ folder in the top repo.
 In this demo, they are under the deploy folder.
 Both ansible-playbooks are under the Ansible folder in the top directory.
    
-   - ***Third step*** Prepare the Hub-Cluster to interact with Ansible-Tower
+### Third step - Prepare the Hub-Cluster to interact with Ansible-Tower
 
 There are two elements that need to be done:
-* Install the Operator
-* Deploy a secret in the relevant "subscription namespace" on the Hub
+* Install the Ansible Automation Platform Resource Operator
+* Deploy a secret in the relevant "subscription namespace" on the Hub-cluster
+
+The secret looks like the following
+
+    ![alt text](https://github.com/SimonDelord/ACM-Ansible/blob/main/images/secret.png)
    
    
-   - ***Fourth step*** Deploy the Application in ACM to the two clusters
+### Fourth step - Deploy the Application via ACM to the two clusters
 
 I won't describe the details for the application deployment, but the only difference (in ACM2.2) is to add under the "secret created in Step 3" under the Application.
 From my experience you need a bit of time for the DNS entries to propagate, but after a few minutes the setup should work.
