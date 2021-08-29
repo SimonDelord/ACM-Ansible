@@ -3,7 +3,7 @@ apiVersion: tower.ansible.com/v1alpha1
 kind: AnsibleJob
 metadata:
   name: retrieve-dns-entry
-  namespace: test
+  namespace: simon-ansible
   labels:
     app.kubernetes.io/name: hello-simon
 spec:
